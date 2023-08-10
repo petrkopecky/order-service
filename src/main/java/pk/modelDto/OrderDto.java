@@ -7,7 +7,7 @@ public class OrderDto {
     private Long id;
     private String firstName;
     private String lastName;
-    private List<ProductDto> products;
+    private List<Long> productsId;
 
     public Long getId() {
         return id;
@@ -33,18 +33,18 @@ public class OrderDto {
         this.lastName = lastName;
     }
 
-    public List<ProductDto> getProducts() {
-        return products;
+    public List<Long> getProductsId() {
+        return productsId;
     }
 
-    public void setProducts(List<ProductDto> products) {
-        this.products = products;
+    public void setProductsId(List<Long> products) {
+        this.productsId = productsId;
     }
 
-    public void addProductDto(ProductDto productDto) {
-        if (this.products == null) {
-            this.products = new ArrayList<>();
+    public void addProductDto(Long productId) {
+        if (this.productsId == null) {
+            this.productsId = new ArrayList<>();
         }
-        this.products.add(productDto);
+        this.productsId.add(productId);
     }
 }

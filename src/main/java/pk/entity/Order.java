@@ -12,12 +12,11 @@ public class Order {
     private Long id;
     private String firstName;
     private String lastName;
-    @ManyToMany
-    @JoinTable(
-            name = "eorder_eproduct",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Product> products;
+
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "e_products", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "productId", nullable = false)
+    private List<Long> productsId;
 
     public Long getId() {
         return id;
@@ -43,13 +42,11 @@ public class Order {
         this.lastName = lastName;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<Long> getProductsId() {
+        return productsId;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setProductsId(List<Long> productsId) {
+        this.productsId = productsId;
     }
-
-
 }

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pk.exception.EntityNotFoundException;
 import pk.mapperDto.OrderMapper;
-import pk.mapperDto.ProductMapper;
 import pk.modelDto.OrderDto;
 import pk.repository.OrderJpaRepository;
 
@@ -14,7 +13,7 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
     private final OrderJpaRepository orderJpaRepository;
-    private ProductMapper productMapper = Mappers.getMapper(ProductMapper.class);
+
     private OrderMapper orderMapper = Mappers.getMapper(OrderMapper.class);
 
     @Autowired
