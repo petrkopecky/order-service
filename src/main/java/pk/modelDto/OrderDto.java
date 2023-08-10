@@ -37,7 +37,7 @@ public class OrderDto {
         return productsId;
     }
 
-    public void setProductsId(List<Long> products) {
+    public void setProductsId(List<Long> productsId) {
         this.productsId = productsId;
     }
 

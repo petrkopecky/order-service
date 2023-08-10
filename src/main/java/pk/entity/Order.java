@@ -13,7 +13,7 @@ public class Order {
     private String firstName;
     private String lastName;
 
-    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
+    @ElementCollection(targetClass = Long.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "e_products", joinColumns = @JoinColumn(name = "id"))
     @Column(name = "productId", nullable = false)
     private List<Long> productsId;
