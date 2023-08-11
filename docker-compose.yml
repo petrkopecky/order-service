@@ -13,7 +13,16 @@ services:
           - '5434:5432'
       volumes:
           - db:/var/lib/postgresql/data
-
+  web:
+    build:
+      dockerfile: Dockerfile
+    image: order-service
+    networks:
+      - enet
+    ports:
+      - "8082:8080"
+    depends_on:
+      - db
 volumes:
     db:
       driver: local
