@@ -19,6 +19,7 @@ services:
     image: order-service
     networks:
       - enet
+      - web
     ports:
       - "8082:8080"
     depends_on:
@@ -29,3 +30,6 @@ volumes:
 networks:
   enet:
     driver: bridge
+  web:
+    external: true #needs to be created by other file
+    name: shared-web
