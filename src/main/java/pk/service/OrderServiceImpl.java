@@ -5,9 +5,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pk.controller.ProductController;
 import pk.entity.Order;
 import pk.exception.EntityNotFoundException;
 import pk.mapperDto.OrderMapper;
+import pk.mapperDto.ProductDto;
 import pk.modelDto.OrderDto;
 import pk.repository.OrderJpaRepository;
 import pk.springboot.Application;
@@ -19,16 +21,22 @@ public class OrderServiceImpl implements OrderService {
     Logger logger = LoggerFactory.getLogger(OrderService.class);
     private final OrderJpaRepository orderJpaRepository;
 
+    private ProductController productController;
+
     private OrderMapper orderMapper = Mappers.getMapper(OrderMapper.class);
 
     @Autowired
-    OrderServiceImpl(OrderJpaRepository orderJpaRepository) {
+    OrderServiceImpl(OrderJpaRepository orderJpaRepository, ProductController productController) {
         this.orderJpaRepository = orderJpaRepository;
-
+        this.productController=productController;
     }
     @Override
     public OrderDto addOrder(OrderDto orderDto) {
         //Order order =orderMapper.OrderDtoToOrder(orderDto);
+        ProductDto productDto=productController.fetchProductById(1L);
+        logger.info(productDto.toString());
+
+
         return orderMapper.OrderToOrderDto(orderJpaRepository.save(orderMapper.OrderDtoToOrder(orderDto)));
     }
 
