@@ -8,7 +8,8 @@ import pk.mapperDto.ProductDto;
 
 @RestController
 public class ProductController {
-    private static final String RESOURCE_URL = "http://172.24.0.2:8081/products";
+    //refactor resource_url to application.yml
+    private static final String RESOURCE_URL = "http://172.24.0.2:8080/products";
     private RestTemplate restTemplate;
 
     public ProductController(RestTemplateBuilder restTemplateBuilder) {
