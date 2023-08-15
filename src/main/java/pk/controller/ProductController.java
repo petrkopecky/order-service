@@ -13,8 +13,6 @@ import pk.service.OrderService;
 @RestController
 public class ProductController {
     Logger logger = LoggerFactory.getLogger(ProductController.class);
-    //refactor resource_url to application.yml
-    //private static final String RESOURCE_URL = "http://172.24.0.2:8080/products";
 
     @Value("${application.product-service-url}")
     private String productServiceUrl;
